@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENAMORATE CON MORAT</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(155deg, #525B56, #BE9063,#A497BE);
+            color: #BE9063;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #FFFFFF;
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        .lista-canciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.5s forwards;
+        }
+
+        .cancion {
+            background: linear-gradient(200deg, #525B56, #132226,#040C0E);
+            color: #BE9063;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgb(117, 107, 86);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cancion:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .cancion img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgb(10, 10, 10);
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+
+        .cancion:hover img {
+            transform: scale(1);
+        }
+
+        .cancion h2 {
+            color: #BE9063;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .cancion p {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 250px;
+            margin: 20px auto;
+            display: block;
+            background: #132226;
+            color: #BE9063;
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition:  0.3s;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-pause-button {
+            color: #070707;
+            background-color: #fff;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        audio::-webkit-media-controls-volume-slider {
+            background-color: #FFF;
+        }
+
+        audio::-webkit-media-controls-seek-back-button,
+        audio::-webkit-media-controls-seek-forward-button,
+        audio::-webkit-media-controls-timeline {
+         
+            transition: background-color 0.3s;
+        }
+
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display {
+            color: #BE9063;
+        }
+
+        audio::-moz-range-thumb {
+            background-color: #fff;
+            border:2px;
+        }
+
+        audio::-moz-range-track {
+            background-color: #fff;
+            border: 5px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #132226, #525B56);
+            padding: 10px;
+            text-align: center;
+            color: #BE9063;
+            font-size: 16px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        button {
+            border: 0;
+             background-image: linear-gradient(
+             150deg,
+             #132226,
+             #525B56,
+             #BE9063
+             );
+             border-radius: 8px;
+             color: #fff;
+             display: flex;
+             font-size: 18px;
+             padding: 4px;
+             cursor: pointer;
+             transition: .3s;
+            
+        }
+        button span{
+            background-color: #132226;
+            padding: 16px 24px;
+            border-radius: 6px;
+            transition: .3s;
+        }
+        button:hover span {
+            background-color: none;
+        }
+        button:active {
+            transform: scale(0.9);
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>ENAMORATE CON MORAT</h1>
+
+    <div class="lista-canciones">
+        <!-- Canción 1 -->
+        <div class="cancion">
+            <img src="./otras musica/0937831001689341759.jpg" alt="Canción 1">
+            <h2>Hasta por la mañana</h2>
+            <p>MORAT</p>
+            <audio controls>
+                <source src="../musicas/hata por la mañana.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+
+        <!-- Canción 2 -->
+        <div class="cancion">
+            <img src="./otras musica/Bacilos-Morat-Tabaco-y-Channel.jpg" alt="Canción 2">
+            <h2>Tabaco y Chanel</h2>
+            <p>MORAT </p>
+            <audio controls>
+                <source src="../Albumes/otras musica/canciones otras/Bacilos & Morat - Tabaco y Chanel (Video Letra Oficial).mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+
+                <!-- Canción 2 -->
+                <div class="cancion">
+                    <img src="./otras musica/porfa no te vayas.jpg" alt="Canción 2">
+                    <h2>Porfa no te vayas</h2>
+                    <p>MORAT</p>
+                    <audio controls>
+                        <source src="../Albumes/otras musica/canciones otras/Beret & Morat - Porfa no te vayas (Videoclip Oficial).mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+
+<!-- Canción 2 -->
+<div class="cancion">
+    <img src="./otras musica/enamorate de alguen mas.jpg" alt="Canción 2">
+    <h2>Enamorate de alguien mas</h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/Morat - Enamu00f3rate De Alguien Mu00e1s.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+<!-- Canción 2 -->
+                <div class="cancion">
+                    <img src="./otras musica/antes de los 20.jpg" alt="Canción 2">
+                    <h2>Antes de los 20</h2>
+                    <p>MORAT</p>
+                    <audio controls>
+                        <source src="../Albumes/otras musica/canciones otras/Morat - Antes De Los Veinte (Visualiser).mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+
+
+<!-- Canción 2 -->
+                <div class="cancion">
+                    <img src="./otras musica/huele a gol.jpg" alt="Canción 2">
+                    <h2>Huele a Gol</h2>
+                    <p>MORAT</p>
+                    <audio controls>
+                        <source src="../Albumes/otras musica/canciones otras/Morat - Huele a Gol.mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+<!-- Canción 2 -->
+<div class="cancion">
+    <img src="./otras musica/en como.png" alt="Canción 2">
+    <h2>En Coma </h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/Morat - En Coma.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+<div class="cancion">
+    <img src="./otras musica/al aire.jpg" alt="Canción 2">
+    <h2>Al  Aire </h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/Morat - Al Aire (Letra_Lyrics).mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+
+<div class="cancion">
+    <img src="./otras musica/no termino.jpg" alt="Canción 2">
+    <h2>No Termino</h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/Morat - No Termino (Letra).mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+<div class="cancion">
+    <img src="./otras musica/consejo de amor.jpg" alt="Canción 2">
+    <h2>Consejo de Amor</h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/TINI, Morat - Consejo de Amor [Letra]..mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+<div class="cancion">
+    <img src="./otras musica/una vez mas.jpg" alt="Canción 2">
+    <h2>Una vez más</h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/Santiago Cruz, Morat - Una Y Otra Vez (Video Oficial).mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+<div class="cancion">
+    <img src="./otras musica/la bella y la bestia.jpg" alt="Canción 2">
+    <h2>La Bella y La Bestia</h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/Reik, Morat - La Bella y la Bestia (Letra_Lyrics).mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+<div class="cancion">
+    <img src="./otras musica/no ha mas que hablar.jpg" alt="Canción 2">
+    <h2>No hay más que hablar</h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/Morat - No Hay Mu00e1s Que Hablar.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+
+
+<div class="cancion">
+    <img src="./otras musica/date la vuelta.jpg" alt="Canción 2">
+    <h2>Date la vuelta</h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/Morat - Date La Vuelta (Letra).mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+
+<div class="cancion">
+    <img src="./otras musica/bajo la mesa.jpg" alt="Canción 2">
+    <h2>Bajo la Mesa</h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/Morat, Sebastiu00e1n Yatra - Bajo La Mesa.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+<div class="cancion">
+    <img src="./otras musica/mix.jpg" alt="Canción 2">
+    <h2>MIX DE MORAT </h2>
+    <p>MORAT</p>
+    <audio controls>
+        <source src="../Albumes/otras musica/canciones otras/Morat - MIX Grandes u00c9xitos.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</div>
+
+    
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <button >
+        <span> <a href="/index.html">Volver atras</a> </span>
+    </button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+    <footer>
+        <p>© 2023 JV_MARIO | POTOSI-BOLIVIA</p>
+    </footer>
+
+    <script>
+        // Función para animar los controles del reproductor al interactuar con él
+        function animateAudioControls() {
+            const audioControls = document.querySelector('audio::-webkit-media-controls-panel');
+
+            audioControls.addEventListener('mouseover', () => {
+                audioControls.style.opacity = '1';
+                audioControls.style.transform = 'translateY(0)';
+            });
+
+            audioControls.addEventListener('mouseout', () => {
+                audioControls.style.opacity = '0';
+                audioControls.style.transform = 'translateY(30px)';
+            });
+        }
+
+        // Llamamos a la función cuando se carga la página
+        document.addEventListener('DOMContentLoaded', animateAudioControls);
+    </script>
+</body>
+</html>
