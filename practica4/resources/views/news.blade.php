@@ -24,7 +24,7 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="/">
             <img src="images/logo_morat-removebg-preview.png" alt="">
             <span>
               MUNDO MORAT
@@ -38,9 +38,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ url('/index') }}">Inicio </a>
-                </li>
+              <li class="nav-item active">
+    <a class="nav-link" href="/">Inicio</a>
+</li>
+
 
 
                 <li class="nav-item">
