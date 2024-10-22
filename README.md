@@ -1,6 +1,6 @@
 # PHPUnit
 
-![Inicio](https://www.youtube.com/watch?v=TYrcdhots80)  <!-- Aquí se agrega la imagen -->
+![Inicio](https://i.ytimg.com/vi/TYrcdhots80/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDSIxz2XdMc3YmW72VCcsRvsuiX2A)  <!-- Aquí se agrega la imagen -->
 
 [![Latest Stable Version](https://poser.pugx.org/phpunit/phpunit/v)](https://packagist.org/packages/phpunit/phpunit)
 [![CI Status](https://github.com/sebastianbergmann/phpunit/workflows/CI/badge.svg)](https://github.com/sebastianbergmann/phpunit/actions)
