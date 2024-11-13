@@ -1,24 +1,18 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Reloj; 
+use App\Models\Reloj;
 use Illuminate\Http\Request;
 
 class RelojController extends Controller
 {
     public function index()
-    {
-        $relojes = Reloj::all(); 
-        return view('relojes.index', compact('relojes'));
-    }
+{
+    $relojes = Reloj::all();
+    return response()->json($relojes); 
+}
 
-    public function create()
-    {
-        return view('relojes.create');
-    }
-
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $request->validate([
             'marca' => 'required|string|max:255',
@@ -27,41 +21,49 @@ class RelojController extends Controller
             'resistencia_agua' => 'required|integer',
         ]);
 
-        Reloj::create($request->all());
-        return redirect()->route('relojes.index')->with('success', 'Reloj creado correctamente.');
+        $reloj = Reloj::create($request->all());
+        return response()->json($reloj, 201); 
     }
 
-    public function edit($id)
-{
-    $reloj = Reloj::findOrFail($id);
-    return view('relojes.edit', compact('reloj'));
-}
+    public function show($id)
+    {
+        $reloj = Reloj::find($id);
 
-public function update(Request $request, $id)
-{
-    $request->validate([
-        'marca' => 'required',
-        'modelo' => 'required',
-        'material_correa' => 'required',
-        'resistencia_agua' => 'required|numeric',
-    ]);
+        if (!$reloj) {
+            return response()->json(['error' => 'Reloj no encontrado'], 404);
+        }
 
-    $reloj = Reloj::findOrFail($id);
-    $reloj->marca = $request->marca;
-    $reloj->modelo = $request->modelo;
-    $reloj->material_correa = $request->material_correa;
-    $reloj->resistencia_agua = $request->resistencia_agua;
-    $reloj->save();
+        return response()->json($reloj);
+    }
 
-    return redirect()->route('relojes.index')->with('success', 'Reloj actualizado correctamente.');
-}
+    public function update(Request $request, $id)
+    {
+        $reloj = Reloj::find($id);
 
+        if (!$reloj) {
+            return response()->json(['error' => 'Reloj no encontrado'], 404);
+        }
 
-public function destroy($id)
-{
-    $reloj = Reloj::findOrFail($id);
-    $reloj->delete();
+        $request->validate([
+            'marca' => 'required|string|max:255',
+            'modelo' => 'required|string|max:255',
+            'material_correa' => 'required|string|max:255',
+            'resistencia_agua' => 'required|integer',
+        ]);
 
-    return redirect()->route('relojes.index')->with('success', 'Reloj eliminado correctamente.');
-}
+        $reloj->update($request->all());
+        return response()->json($reloj);
+    }
+
+    public function destroy($id)
+    {
+        $reloj = Reloj::find($id);
+
+        if (!$reloj) {
+            return response()->json(['error' => 'Reloj no encontrado'], 404);
+        }
+
+        $reloj->delete();
+        return response()->json(['message' => 'Reloj eliminado correctamente']);
+    }
 }
